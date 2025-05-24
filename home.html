@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="home-page">
+    <div class="transition-overlay"></div>
+    <div class="title-button">Law Firm Management System</div>
+    <div class="card-container">
+        <a href="client/login.html" class="card" onclick="handleTransition(event)">
+            <img src="images/card1.png" alt="Card 1" width="344" height="440">
+            <span class="card-text">Client</span>
+        </a>
+        <a href="lawyer/login.html" class="card" onclick="handleTransition(event)">
+            <img src="images/card2.png" alt="Card 2" width="344" height="440">
+            <span class="card-text">Lawyer</span>
+        </a>
+        <a href="admin/login.html" class="card" onclick="handleTransition(event)">
+            <img src="images/card 3.png" alt="Card 3" width="344" height="440">
+            <span class="card-text">Admin</span>
+        </a>
+    </div>
+
+    <script>
+        function handleTransition(event) {
+            event.preventDefault();
+            const overlay = document.querySelector('.transition-overlay');
+            const targetHref = event.currentTarget.href;
+
+            // Start the transition
+            overlay.classList.add('active');
+            document.body.classList.add('fade-out');
+
+            // Navigate to the new page after transition
+            setTimeout(() => {
+                window.location.href = targetHref;
+            }, 500); // Match this with the CSS transition duration
+        }
+
+        // Add fade-in effect when page loads
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '1';
+        });
+    </script>
+</body>
+</html>

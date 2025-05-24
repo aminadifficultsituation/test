@@ -1,0 +1,185 @@
+/* Load local pixel font */
+@font-face {
+    font-family: 'PixelFont';
+    src: url('fonts/mypixel.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    overflow: hidden; /* no scrolling */
+}
+
+body {
+    background: url('images/bg1.png') no-repeat center center fixed;
+    background-size: cover;
+    /* ADD THESE for pixel clarity */
+    image-rendering: pixelated; /* Ensures sharpness for pixel art */
+    image-rendering: crisp-edges; /* Fallback for older browsers */
+    transition: background 0.5s ease;
+}
+
+body.home-page {
+    background: url('images/1.png') no-repeat center center fixed;
+    background-size: cover;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+body.fade-out {
+    opacity: 0;
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-wrapper {
+    width: 86px;
+    height: 73px;
+    image-rendering: pixelated;
+    zoom: 5;
+    margin-bottom: 10px;
+}
+
+    .logo-wrapper img {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+
+.button-wrapper {
+    position: relative;
+    width: 91px;
+    height: 32px;
+    background: url('images/button.png') no-repeat center center;
+    background-size: contain;
+    image-rendering: pixelated;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    zoom: 4;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+    .button-wrapper:hover {
+        transform: scale(1.05);
+        transform-origin: center;
+    }
+
+.button-text {
+    font-family: 'PixelFont', monospace;
+    font-size: 12px;
+    color: white;
+    user-select: none;
+}
+
+.card-container {
+    display: flex;
+    flex-direction: row; /* Horizontal layout */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Full viewport height */
+    width: 100vw; /* Full viewport width */
+    gap: 40px; /* Space between cards */
+    position: absolute; /* Ensure no offset */
+    top: 15%; /* Adjusted to 15% as requested */
+    left: 0;
+    margin: 0; /* Remove inherited margins */
+    padding: 0; /* Remove inherited padding */
+}
+
+.title-button {
+    position: absolute;
+    top: 5%; /* Position above cards */
+    left: 50%;
+    transform: translateX(-50%); /* Center horizontally */
+    width: 682px; /* Scaled width (128 * 5.33) */
+    height: 128px; /* Scaled height (24 * 5.33) */
+    background: url('images/home_title.png') no-repeat center center;
+    background-size: contain;
+    image-rendering: crisp-edges; /* Ensure sharp image */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'PixelFont', monospace;
+    font-size: 32px; /* Adjusted for larger button */
+    color: white;
+    text-align: center;
+}
+
+.card {
+    width: 344px; /* 86 * 4 */
+    height: 440px; /* 110 * 4 */
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+    transition: transform 0.2s ease, background 0.3s ease;
+    backdrop-filter: blur(4px);
+    cursor: pointer;
+    image-rendering: crisp-edges; /* Ensure sharp edges */
+    background: rgba(255, 255, 255, 0.1);
+    position: relative; /* Enable absolute positioning for text */
+}
+
+    .card img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        image-rendering: crisp-edges; /* Ensure image clarity */
+    }
+
+.card-text {
+    position: absolute;
+    bottom: 78px; /* Moved higher from 10px */
+    left: 50%;
+    transform: translateX(-50%); /* Center horizontally */
+    font-family: 'PixelFont', monospace;
+    font-size: 24px; /* Adjustable for readability */
+    color: white;
+    padding: 2px 8px; /* Keep padding for spacing */
+    image-rendering: crisp-edges; /* Ensure sharp text */
+}
+
+.card:hover {
+    transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Page Transition Styles */
+.transition-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s;
+    z-index: 9999;
+}
+
+.transition-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}

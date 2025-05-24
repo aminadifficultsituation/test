@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Logo and Button Front Page</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="homes.css" />
+</head>
+<body>
+    <div class="transition-overlay"></div>
+    <div class="container">
+        <div class="logo-wrapper">
+            <img src="images/logo.png" alt="Logo" />
+        </div>
+        <a href="home.html" class="button-wrapper" onclick="handleTransition(event)">
+            <span class="button-text">GET STARTED</span>
+        </a>
+    </div>
+
+    <script>
+        function handleTransition(event) {
+            event.preventDefault();
+            const overlay = document.querySelector('.transition-overlay');
+            const targetHref = event.currentTarget.href;
+
+            // Start the transition
+            overlay.classList.add('active');
+            document.body.classList.add('fade-out');
+
+            // Navigate to the new page after transition
+            setTimeout(() => {
+                window.location.href = targetHref;
+            }, 500); // Match this with the CSS transition duration
+        }
+    </script>
+</body>
+</html>
